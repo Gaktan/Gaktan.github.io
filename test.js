@@ -1,9 +1,51 @@
 var reader;
 var progress;
 
-function abortRead() {
-    reader.abort();
+var wordMap;
+var topTen;
+
+function makeFun(firstWord, total) {
+
+	if (wordMap == undefined) {
+		return "You need to upload a file first.";
+	}
+	if (firstWord == undefined) {
+		return "You must select a word to start with.";
+	}
+	if (total == undefined || total < 1) {
+		total = 1;
+	}
+
+    var word = wordMap[firstWord];
+	
+	if (word == undefined) {
+		return "Could not find the word \"" + firstWord + "\".";
+	}
+	
+	var totalResult = "";
+
+	var count = 0;
+    while (count < total) {
+        count++;
+		
+        var sentence = word.makeRandomSentence();
+
+        if (sentence.length == 0)
+            continue;
+
+        sentence = sentence.replace(sentence[0], sentence[0].toUpperCase());
+		sentence = sentence.replace(" , ", ", ");
+        sentence += ".\n";
+
+		totalResult += sentence;
+    }
+	
+	return totalResult;
 }
+
+function disableInput(bool) {
+	document.getElementById('customField').disabled = bool;
+};
 
 function errorHandler(evt) {
     switch (evt.target.error.name) {
@@ -52,15 +94,31 @@ function handleFileSelect(evt) {
         // Ensure that the progress bar displays 100% at the end.
         progress.style.width = '100%';
         progress.textContent = '100%';
-        setTimeout("document.getElementById('progress_bar').className='';", 2000);
+        //setTimeout("document.getElementById('progress_bar').className='';", 2000);
 
         if (e.target.readyState == FileReader.DONE) { // DONE == 2
-            // document.getElementById('result').textContent = splitSentences();
-            document.getElementById('result').textContent = processText(e.target.result);
+			var result = processText(e.target.result);
+			wordMap = result.wordMap;
+			topTen = result.topTen;
+			
+			var text = "";
+		
+			
+			for (var top in topTen) {
+				var value = topTen[top];
+				var name = value.replace(value[0], value[0].toUpperCase());
+				text += '<input type="radio" name="topTen" value="' + value + '" id="' + value + '" onClick="disableInput(true)">';
+				text += '<label for="' + value + '">' + name + ' (' + wordMap[value].count + ')</label>';
+				text += '<br>';
+			}
+			
+			text += '<input type="radio" name="topTen" value="custom" id="custom" onClick="disableInput(false)">';
+			text += '<input name="customField" value="..." id="customField" disabled>';
+			
+            document.getElementById('top_ten').innerHTML = text;
         }
     };
 
-    // Read in the image file as a binary string.
     reader.readAsBinaryString(evt.dataTransfer.files[0]);
 }
 
@@ -104,44 +162,19 @@ function processText(bigString) {
     var values = Object.keys(map).sort(function(a, b) {
         return map[b].count - map[a].count;
     });
+	
+	var result = {wordMap: map, topTen: values.slice(0, 10)};
 
-    var word;
-	var totalResult = "";
-
-    var count = 0;
-    while (count < 100) {
-        count++;
-
-        // word = (Word) values.get(generator.nextInt(values.length));
-        // word = map.get("I");
-        word = map[values[0]];
-
-        var sentence = word.makeRandomSentence();
-
-        if (sentence.length == 0)
-            continue;
-
-        sentence = sentence.replace(sentence[0], sentence[0].toUpperCase());
-		sentence = sentence.replace(" , ", ", ");
-        sentence += ".\n";
-
-        console.log(sentence);
-		totalResult += sentence;
-    }
-
-    return totalResult;
+    return result;
 }
 
 function splitSentences(bigString) {
     var list = [];
-
     var lines = bigString.replace(/,/g, ' ,').toLowerCase().split(/\r\n|\r|\n/);
     lines.forEach(function(s) {
         var sentences = s.replace(/\r\n|\r|\n/g, " ").trim().split(/(\.|\!|\?)/g);
         sentences.forEach(function(s2) {
-
             s2 = s2.trim().replace(/(\.|\!|\?)/g, '');
-
             if (s2 != undefined && s2 != '') {
                 list.push(s2);
             }
@@ -182,11 +215,9 @@ Word.prototype.makeRandomSentence = function() {
             total += self.nextWords[next].count;
         });
 
-        //int random = new Random().nextInt(total);
         var random = Math.random() * total;
 
         var nextWord = undefined;
-
         total = 0;
         Object.keys(self.nextWords).every(function(next) {
             total += self.nextWords[next].count;
@@ -200,15 +231,12 @@ Word.prototype.makeRandomSentence = function() {
         result += " ";
         result += nextWord.word.makeRandomSentence();
     }
-
     return result;
 }
-
 Word.prototype.increment = function() {
     this.count++;
 }
 Word.prototype.addNextWord = function(word) {
-
     var found = this.nextWords[word.word];
 
     if (found == undefined || isFunction(found)) {
