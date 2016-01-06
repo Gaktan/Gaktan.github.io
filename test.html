@@ -1,0 +1,67 @@
+<html>
+<head>
+<script src="test.js"></script>
+
+<style>
+#drop_zone {
+  border: 2px dashed #bbb;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+  font: 20pt bold 'Vollkorn';
+  color: #bbb;
+}
+#drop_zone.hover
+{
+	color: #f00;
+	border-color: #f00;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}
+#progress_bar {
+    margin: 10px 0;
+    padding: 3px;
+    border: 1px solid #000;
+    font-size: 14px;
+    clear: both;
+    opacity: 0;
+    -moz-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+    -webkit-transition: opacity 1s linear;
+}
+	#progress_bar.loading {
+	opacity: 1.0;
+}
+	#progress_bar .percent {
+	background-color: #99ccff;
+	height: auto;
+	width: 0;
+}
+#result
+{
+  white-space:pre-wrap;
+}
+</style>
+
+</head>
+
+<body>
+<div id="drop_zone">Drop files here</div>
+<button onclick="abortRead();">Cancel read</button>
+<div id="progress_bar"><div class="percent">0%</div></div>
+<div id="result"></div>
+<script>
+	// Setup the dnd listeners.
+	var dropZone = document.getElementById('drop_zone');
+	dropZone.addEventListener('dragover', handleDragOver, false);
+	dropZone.addEventListener('drop', handleFileSelect, false);
+</script>
+
+<script>
+  
+
+</script>
+</body>
+</html>
