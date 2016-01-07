@@ -107,13 +107,13 @@ function handleFileSelect(evt) {
 			for (var top in topTen) {
 				var value = topTen[top];
 				var name = value.replace(value[0], value[0].toUpperCase());
-				text += '<input type="radio" name="topTen" value="' + value + '" id="' + value + '" onClick="disableInput(true)">';
+				text += '<input type="radio" name="topTen" value="' + value + '" id="' + value + '" onClick="disableInput(true);">';
 				text += '<label for="' + value + '">' + name + ' (' + wordMap[value].count + ')</label>';
 				text += '<br>';
 			}
 			
-			text += '<input type="radio" name="topTen" value="custom" id="custom" onClick="disableInput(false)">';
-			text += '<input name="customField" value="..." id="customField" disabled>';
+			text += '<input type="radio" name="topTen" value="custom" id="custom" onClick="disableInput(false);">';
+			text += '<input name="customField" value="..." id="customField" onkeydown="if (event.keyCode == 13) {return false;}" disabled>';
 			
             document.getElementById('top_ten').innerHTML = text;
         }
@@ -246,8 +246,7 @@ Word.prototype.addNextWord = function(word) {
     }
 }
 Word.prototype.sort = function() {
-    this.nextWords.sort(function(a, b) {
-        console.log(b + ", " + a)
+    this.nextWords.__proto__.sort(function(a, b) {
         return b.count - a.count;
     });
 }
