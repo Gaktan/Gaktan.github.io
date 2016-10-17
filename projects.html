@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" media="screen"
         href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.css" />
         <script type"text/javascript" src="https://assets.gfycat.com/gfycat.js"></script>
-        <title>Gaëtan Monnier | Game programmer</title>
+        <title>Gaëtan Monnier | Graphic programmer</title>
     </head>
     <body>
         <div id="page">
@@ -17,7 +17,7 @@
                 <div id="title">
                     <a href="index.html">Gaëtan Monnier</a>
                 </div>
-                <div id ="subtitle"> > Game programmer</div>
+                <div id ="subtitle"> > Graphic programmer</div>
             </div>
             <div id="banner">
                 <ul>
@@ -28,7 +28,111 @@
             </div>
             <!-- Content-->
             <div id="content">
-                <h1 id="maya_wars">
+				<h1 id="ezio_collection">
+The Ezio Collection
+				</h1>
+				<p>
+<a href="http://assassinscreed.ubi.com/en-US/games/ezio-trilogy/" target="_blank">The Ezio Collection</a> is a pack of three AAA games
+(Assassin's Creed II, Assassin's Creed: Brotherhood and Assassin's Creed: Revelations). Released on November 15th, 2016.
+				</p>
+				<table>
+					<tr>
+						<th>Platforms</th>
+						<td>PS4, Xbox One</td>
+					</tr>
+					<tr>
+						<th>Languages</th>
+						<td>C++, HLSL (shaders)</td>
+					</tr>
+				</table>
+				<p>
+This is the first AAA project I have ever worked on. And a quite exciting one since I absolutely love these three games. It was
+a real pleasure and honnor to have the priviledge to work on them. I never thought I ever would. Overall this was a great opportunity for me
+				</p>
+				<p>
+But also a real challenge. It was my first time working on consoles and a project that complex. The biggest difficulty was to understand
+the engine, that means understanding what the programmers who originally designed the engine intended to do with it.
+				</p>
+				<p>
+The gameplay, system, and core parts of each game were left untouched. Only the engine and graphic engine were to be changed, and I mainly worked on the graphic engine.
+				</p>
+				<p>
+My main task on this project was to port Assassin's Creed II from PS3/XBOX360 to current gen console, and mainly PS4.
+But here is a non exhaustive list of what I did on this project:
+				</p>
+				<ul>
+					<li>4K checkerboard implementation on PS4 Pro for all three games.</li>
+					<li>Refactoring of the graphic engine.</li>
+					<li>Multithreaded rendering.</li>
+					<li>Porting eventual upgrades from Assassin's Creed Revelations</li>
+					<li>Modern post effects.</li>
+					<li>HDAO (High Definition Ambient Occlusion).</li>
+					<li>Fixing tons of bugs and crashes (as well as a few already present in the original game).</li>
+				</ul>
+				
+				<hr /> <!-- SEPARATION !-->
+				
+				<h1 id="wolfen_doo">
+Wolfen-doo
+				</h1>
+				<p>
+Wolfen-Doo is the game I'm currently working on. I aim to bring the odd blend the Wolfenstein 3D style
+into the Scooby-Doo universe.
+				</p>
+				<table>
+					<tr>
+						<th>Platforms</th>
+						<td>PC (possibly Linux and Mac as well since it's Java)</td>
+					</tr>
+					<tr>
+						<th>Languages</th>
+						<td>Java, GLSL (shaders)</td>
+					</tr>
+				</table>
+				<p>
+I did everything in this game, from game code to most of the "art".
+				</p>
+				<p>
+This project started as a school assignment to train myself programming and also discover game programming,
+making a real-time engine, learning the basics of openGL, 3D mathematics and so much more.
+				</p>
+				<p>
+This game was my first introduction to "real" game programming. I did make many other little forgotten games in the past,
+but most of them were made without a game programming set of mind (they were basically very slow, not optimized and really hard to work with).
+				</p>
+				<p>
+I intended the engine to be as easy to use and as intuitive as possible. That way, I could use it again to make more games.
+				<p>
+It features :
+				</p>
+				<ul>
+					<li>Fully working 3D game engine.</li>
+					<li>Character movements and simple collisions with the world and other entities.</li>
+					<li>Map generator (from custom file or random dungeon generation with seed).</li>
+					<li>Fully working sprite animations with configurable file.</li>
+					<li>Particle systems.</li>
+					<li>Doors.</li>
+					<li>Weapons.</li>
+					<li>Menus.</li>
+					<li>Prototype for A.I with pathfinding.</li>
+					<li>And so many other things I can't list</li>
+				</ul>
+				<p>
+You will be able to find the source code on <a href="https://github.com/Gaktan/Wolfen-Doo" target="_blank">
+GitHub</a>, as well as the game executable if you would like to try.
+				</p>
+				<p>
+Here are some videos to show what the game is like. Disclaimer: framerate issues are actually caused by the recording software.
+				</p>
+				<center>
+					<div class='gfyitem' data-id='TautWellwornJuliabutterfly' data-autoplay=false></div> 
+					<div class='gfyitem' data-id='FreeShowyHermitcrab' data-autoplay=false></div> 
+					<div class='gfyitem' data-id='YearlyImperfectAtlanticspadefish' data-autoplay=false></div> 
+				</center>
+				
+				<hr /> <!-- SEPARATION !-->
+				
+				<h1 id="maya_wars">
 Maya Wars
                 </h1>
                 <p>
@@ -56,115 +160,56 @@ on during my work placement
                             <li>User inputs (keyboard input,finger controls).</li>
                             <li>Output on screen using openGL context.</li>
                         </ul>
-                        <li>General gameplay programming.</li>
-                        <li>Visual programming like clouds, waves or eagles flying.</li>
-                        <li>Server-side (Javascript) and client-side (C++) programming.</li>
-                        <li>Real-time chat system with rooms.</li>
-                        <li>UI programming for menus and popups.</li>
-                        <li>Rendering top down view map.</li>
-                    </ul>
-                    <p>
+					<li>General gameplay programming.</li>
+					<li>Visual programming like clouds, waves or eagles flying.</li>
+					<li>Server-side (Javascript) and client-side (C++) programming.</li>
+					<li>Real-time chat system with rooms.</li>
+					<li>UI programming for menus and popups.</li>
+					<li>Rendering top down view map.</li>
+				</ul>
+				<p>
 If you would like more details about what I worked on on this game, you can have a look on the <a
 href="https://docs.google.com/document/d/1-eKQqr2uY3CMZ1GZKVthkdD46NDw-gucHnWZjed7dK0/edit?usp=sharing">
 report</a> I wrote half-way through my work placement (french).
-                    </p>
-                    <p>
+				</p>
+				<p>
 Here is an example of the Eagle animation that I worked on, as well as the game interface :
-                    </p>
-                    <iframe src='https://gfycat.com/ifr/FoolhardyShorttermLadybird' target="_blank" frameborder='0' scrolling='no' width='325' height='183' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
-                    <img src="images/maya_screen_thumb.png" class="fancybox" data-big="images/maya_screen.png" title="Overview of the city"/>
-
-                    <hr />
-
-                    <h1 id="wolfen_doo">
-Wolfen-doo
-                    </h1>
-                    <p>
-Wolfen-Doo is the game I'm currently working on. I aim to bring the odd blend the Wolfenstein 3D style
-into the Scooby-Doo universe.
-                    </p>
-                    <table>
-                        <tr>
-                            <th>Platforms</th>
-                            <td>PC (possibly Linux and Mac as well since it's Java)</td>
-                        </tr>
-                        <tr>
-                            <th>Languages</th>
-                            <td>Java, GLSL (shaders)</td>
-                        </tr>
-                    </table>
-                    <p>
-I did everything in this game, from game code to most of the "art".
-                    </p>
-                    <p>
-This project started as a school assignment to train myself programming and also discover game programming,
-making a real-time engine, learning the basics of openGL, 3D mathematics and so much more.
-                    </p>
-                    <p>
-This game was my first introduction to "real" game programming. I did make many other little forgotten games in the past,
-but most of them were made without a game programming set of mind (they were basically very slow, not optimized and really hard to work with).
-                    </p>
-                    <p>
-I intended the engine to be as easy to use and as intuitive as possible. That way, I could use it again to make more games.
-                        <p>
-It features :
-                        </p>
-                        <ul>
-                            <li>Fully working 3D game engine.</li>
-                            <li>Character movements and simple collisions with the world and other entities.</li>
-                            <li>Map generator (from custom file or random dungeon generation with seed).</li>
-                            <li>Fully working sprite animations with configurable file.</li>
-                            <li>Particle systems.</li>
-                            <li>Doors.</li>
-                            <li>Weapons.</li>
-                            <li>Menus.</li>
-                            <li>Prototype for A.I with pathfinding.</li>
-                            <li>And so many other things I can't list</li>
-                        </ul>
-                        <p>
-You will be able to find the source code on <a href="https://github.com/Gaktan/Wolfen-Doo" target="_blank">
-GitHub</a>, as well as the game executable if you would like to try.
-                        </p>
-                        <p>
-Here are some videos to show what the game is like. Disclaimer: framerate issues are actually caused by the recording software.
-                        </p>
-                        <center>
-                            <div class='gfyitem' data-id='TautWellwornJuliabutterfly' data-autoplay=false></div> 
-                            <div class='gfyitem' data-id='FreeShowyHermitcrab' data-autoplay=false></div> 
-                            <div class='gfyitem' data-id='YearlyImperfectAtlanticspadefish' data-autoplay=false></div> 
-                        </center>
-                    </div> <!-- content !-->
-                    <div id="footer">
-                        <p>
+				</p>
+				<iframe src='https://gfycat.com/ifr/FoolhardyShorttermLadybird' target="_blank" frameborder='0' scrolling='no' width='325' height='183' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
+				<img src="images/maya_screen_thumb.png" class="fancybox" data-big="images/maya_screen.png" title="Overview of the city"/>
+				
+			</div> <!-- content !-->
+			<div id="footer">
+			<p>
 Gaëtan MONNIER
-                            <br />
+			<br />
 <a href="mailto:gaetan.monnier72@gmail.com">gaetan.monnier72@gmail.com</a>
-                        </p>
-                    </div>
-                </div> <!-- page !-->
-                <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-                <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-                <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.min.js"></script>
-                <script type="text/javascript">
-                    // Fancy box
-                    $(function($){
-                        $('img.fancybox').each(function(){
-                            var $this = $(this);
-                            var title = $this.attr('title');
-                            var src = $this.attr('data-big') || $this.attr('src');
-                            var a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title);
-                            $this.wrap(a);
-                        });
-                        $('a.fancybox').fancybox({titlePosition:'inside'});
-                    });
-                    $.noConflict();
-                    // Gyfcat
-                    (function(d, t) {
-                        var g = d.createElement(t),
-                            s = d.getElementsByTagName(t)[0];
-                        g.src = 'http://assets.gfycat.com/js/gfyajax-0.517d.js';
-                        s.parentNode.insertBefore(g, s);
-                    }(document, 'script'));
-                </script>
-            </body>
-        </html>
+			</p>
+			</div>
+		</div> <!-- page !-->
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/1.3.4/jquery.fancybox-1.3.4.pack.min.js"></script>
+		<script type="text/javascript">
+			// Fancy box
+			$(function($){
+				$('img.fancybox').each(function(){
+					var $this = $(this);
+					var title = $this.attr('title');
+					var src = $this.attr('data-big') || $this.attr('src');
+					var a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title);
+					$this.wrap(a);
+				});
+				$('a.fancybox').fancybox({titlePosition:'inside'});
+			});
+			$.noConflict();
+			// Gyfcat
+			(function(d, t) {
+				var g = d.createElement(t),
+					s = d.getElementsByTagName(t)[0];
+				g.src = 'http://assets.gfycat.com/js/gfyajax-0.517d.js';
+				s.parentNode.insertBefore(g, s);
+			}(document, 'script'));
+		</script>
+	</body>
+</html>
