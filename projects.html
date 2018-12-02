@@ -28,30 +28,68 @@
             </div>
             <!-- Content-->
             <div id="content">
-            <h1 id="unannounced_vr_project">
-Unannounced VR project
+            <h1 id="lanoire_vr">
+L.A. Noire: The VR Case Files
 				</h1>
-				<p>
-I am currently working on an Unannounced VR project.
-				</p>
+                <p>
+<a href="https://store.steampowered.com/app/722230/LA_Noire_The_VR_Case_Files/" target="_blank">L.A. Noire: The VR Case Files</a>
+                is a VR game created from the 2011 game of the same title. The VR game came out on December 15th, 2017
+                </p>
 				<table>
 					<tr>
 						<th>Platforms</th>
-						<td>PC (HTC Vive)</td>
+						<td>PC (HTC Vive, Oculus Rift)</td>
 					</tr>
 					<tr>
 						<th>Languages</th>
 						<td>C++, HLSL (shaders)</td>
 					</tr>
 				</table>
-				<ul>
-					<li>Refactoring of the graphics engine.</li>
-					<li>Multithreaded rendering.</li>
-                    <li>Instanced stereo Rendering.</li>
-					<li>VR specific implementation (OpenVR).</li>
-					<li>Various optimizations to reach 90FPS (~10ms).</li>
-				</ul>
-				
+                <p>
+For the major part of 2017, I was working on L.A. Noire VR in collaboration with Video Game Deluxe and Rockstar.
+				</p>
+                <p>
+My main role on the project was to optimize the game to reach and maintain the 90FPS target required by VR on PC.
+In order to reach this target, it was crucial to regularly profile the game and identify the possible bottlenecks.
+Which is not an easy task on PC because profiling tools either don't exist or are not as good as on consoles for intance.<br/>
+Also, each PC is unique and one optimization might save a lot of time on one specific PC, but might make things worse on an other.
+				</p>
+                <p>
+Therefore, I mainly focused on obvious optimizations that were guaranteed to save a lot of time regardless of the platform.<br/>
+The biggest bottleneck of the game was the CPU. The game was originally pretty much single-threaded and the budget for rendering
+was about half of the frame! Which is really not a lot in VR when you think about it.
+				</p>
+                <p>
+The biggest optimization I did, and probably the one I spent the most time on was <b>Multithreaded-Rendering</b> (MTR).<br/>
+Considering the game was pretty old, and the original code is very messy because of the chaotic development of the original game,
+refactoring the GFX engine was absolutely necessary to be able to have a chance at multi-threading the rendering.</br>
+In order to limit the GPU bubbles, I also had to delay the commandlist execution to one frame, and execute them in a dedicated thread.<br/>
+This sounds trivial but this was actually causing some issues with OpenVR because it didn't support delayed frames at the time,
+and it was originally messing up the reprojection and made people who were not familiar with VR even more sick.
+                </p>
+                <p>
+As you probably imagine, MTR brought a lot of complications with it, mostly related to the way render-states were handled in the original game,
+causing a lot of flickering on screen. The problem with MTR and flickering is that it may be actually very hard to pinpoint the exact problem
+because you will never be able to make a capture and analyse it in RenderDoc. You have to think outside of the box and play the thought experiment
+of what could be causing your issue.</br>
+Retrospectively, I believe this was a great experience because I'm fairly confident I can identify the cause of any graphical bug by just looking at it
+and therefore spend less time debugging.  
+                </p>
+                <p>
+Here is a non-exhaustive list of the things I did on this project:
+                </p>
+                <ul>
+                    <li>Maintaining terribly old code</li>
+                    <li>Refactoring of the GFX engine, including multithreaded rendering,
+delayed commandlist execution, instanced stereo Rendering, MSAA.</li>
+                    <li>Implementing various VR APIs (OpenVR, Oculus).</li>
+                    <li>Small graphical improvements (God Rays, Smog, SSAO).</li>
+                    <li>Many optimizations to reach and maintain 90FPS target.</li>
+                    <li>CPU and GPU profiling on PCVR.</li>
+                </ul>
+
+                <iframe align="middle" style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/embed/72VXMjO14oc" frameborder="0" allowfullscreen></iframe>
+
 				<hr /> <!-- SEPARATION !-->
                 
 				<h1 id="ezio_collection">
@@ -73,14 +111,14 @@ The Ezio Collection
 				</table>
 				<p>
 This is the first AAA project I have ever worked on. And a quite exciting one since I absolutely love these three games. It was
-a real pleasure and honnor to have the priviledge to work on them. I never thought I ever would. Overall this was a great opportunity for me
+a real pleasure and priviledge to work on them. I never imagined I ever would. Overall this was a great opportunity for me.
 				</p>
 				<p>
 But also a real challenge. It was my first time working on consoles and a project that complex. The biggest difficulty was to understand
 the engine, that means understanding what the programmers who originally designed the engine intended to do with it.
 				</p>
 				<p>
-The gameplay, system, and core parts of each game were left untouched. Only the engine and graphics engine were to be changed, and I mainly worked on the graphic engine.
+The gameplay, system, and core parts of each game were left untouched. Only the engine and GFX engine were to be changed, and I mainly worked on the latter.
 				</p>
 				<p>
 My main task on this project was to port Assassin's Creed II from PS3/XBOX360 to current gen console, and mainly PS4.
