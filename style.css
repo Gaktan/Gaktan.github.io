@@ -87,6 +87,9 @@ body {
 #content hr {
     margin-top: 10%;
     margin-bottom: 1%;
+    /* Properties bellow make the separation bigger while keeping it centered */
+    margin-left: -10%;
+    width: 120%;
 }
 #content h1 {
     color: #dddddd;
